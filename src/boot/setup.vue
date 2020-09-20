@@ -1,23 +1,25 @@
 <template>
-  <view class="container">
-    <app-loading v-if="!isAppReady"> </app-loading>
-    <app v-if="isAppReady"></app>
-  </view>
+  <style-wrapper>
+    <view class="container">
+      <app-loading v-if="!isAppReady"> </app-loading>
+      <app v-if="isAppReady"></app>
+    </view>
+  </style-wrapper>
 </template>
 
 <script>
 import Vue from "vue-native-core";
 import { VueNativeBase } from "native-base";
 import { AppLoading } from "expo/build/Expo";
+import {StyleWrapper} from "../components/StyleWrapper";
 import * as Font from "expo-font";
-
 import App from "../App.vue";
 
 // registering all native-base components to the global scope of the Vue
 Vue.use(VueNativeBase);
 
 export default {
-  components: { App, AppLoading },
+  components: { App, AppLoading, StyleWrapper },
   data() {
     return {
       isAppReady: false
@@ -44,9 +46,8 @@ export default {
   }
 };
 </script>
-
 <style>
-.container {
-  flex: 1;
-}
+  .container {
+    flex: 1;
+  }
 </style>

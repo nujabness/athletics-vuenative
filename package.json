@@ -8,17 +8,22 @@
     "eject": "expo eject"
   },
   "dependencies": {
+    "axios": "^0.20.0",
     "expo": "~38.0.8",
+    "lodash": "^4.17.20",
+    "lodash.merge": "^4.6.2",
     "native-base": "^2.13.14",
     "react": "~16.11.0",
     "react-native": "https://github.com/expo/react-native/archive/sdk-38.0.2.tar.gz",
+    "react-native-easy-grid": "^0.2.2",
     "react-native-gesture-handler": "~1.6.0",
     "react-native-paper": "^4.1.0",
     "react-native-reanimated": "~1.9.0",
     "react-native-screens": "~2.9.0 ",
     "vue-native-core": "^0.1.4",
     "vue-native-helper": "^0.1.4",
-    "vue-native-router": "^0.1.1"
+    "vue-native-router": "^0.1.1",
+    "vuex": "^3.5.1"
   },
   "devDependencies": {
     "@babel/core": "^7.0.0",
