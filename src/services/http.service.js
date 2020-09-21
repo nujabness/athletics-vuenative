@@ -21,19 +21,21 @@ class DataService {
   getAllNationalites(){
     return axiosInstance.get("/nationalite")
   }
-
-
-  getAllEvents(headers) {
-    return axiosInstance.get("/epreuve", headers);
+  getAllEvents() {
+    return axiosInstance.get("/epreuve");
+  }
+  participeEvents(body){
+    return axiosInstance.post("/participer" , body)
+  }
+  annulerParticipation(body){
+    return axiosInstance.post("/annuler/participation" , body)
   }
 
-  participeEvents(body, headers){
-    return axiosInstance.post("/participer" , body, headers)
-  }
 
-  annulerParticipation(body, headers){
-    return axiosInstance.post("/annuler/participation" , body, headers)
-  }
+
+
+
+
 
   getParticipations(body, headers){
     return axiosInstance.post("/participation" , body, headers)

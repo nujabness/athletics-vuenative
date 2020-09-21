@@ -6,6 +6,12 @@ class ImgService {
       default: return require('../assets/france.png');break;
     }
   }
+  getEvent(typeEvent){
+    switch (typeEvent) {
+      case 'SPRINT': return require('../assets/athletics.png');break;
+      default: return require('../assets/athletics.png');break;
+    }
+  }
 }
 
 export default new ImgService();

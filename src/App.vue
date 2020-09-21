@@ -8,18 +8,20 @@
     createDrawerNavigator,
     createStackNavigator,
   } from "vue-native-router";
+  import LoginScreen from "./screens/LoginScreen";
+  import RegisterScreen from "./screens/RegisterScreen";
   import ProfileScreen from "./screens/ProfileScreen.vue";
   import EditProfileScreen from "./screens/EditProfileScreen.vue";
   import TestScreen from "./screens/TestScreen";
-  import LoginScreen from "./screens/LoginScreen";
-  import RegisterScreen from "./screens/RegisterScreen";
+  import EventsScreen from "./screens/EventsScreen";
 
   const DrawerNavigator = createDrawerNavigator(
           {
-            Profile: ProfileScreen,
-            EditProfile: EditProfileScreen,
             Login: LoginScreen,
             Register: RegisterScreen,
+            Profile: ProfileScreen,
+            EditProfile: EditProfileScreen,
+            Events: EventsScreen,
             Test: TestScreen
           },
           {
@@ -30,10 +32,11 @@
   const StackNavigator = createStackNavigator(
           {
             Drawer: DrawerNavigator,
-            Profile: ProfileScreen,
-            EditProfile: EditProfileScreen,
             Login: LoginScreen,
             Register: RegisterScreen,
+            Profile: ProfileScreen,
+            EditProfile: EditProfileScreen,
+            Events: EventsScreen,
             Test: TestScreen
           }
   )
