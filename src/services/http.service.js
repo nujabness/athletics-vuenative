@@ -8,6 +8,9 @@ class DataService {
   register(body){
     return axiosInstance.post("/register" , body)
   }
+  supprimerUsers(body){
+    return axiosInstance.post("/user/delete", body)
+  }
   getAllUsers(){
     return axiosInstance.get("/users")
   }
@@ -30,26 +33,20 @@ class DataService {
   annulerParticipation(body){
     return axiosInstance.post("/annuler/participation" , body)
   }
-
-
-
-
-
-
-
-  getParticipations(body, headers){
-    return axiosInstance.post("/participation" , body, headers)
+  eventUpdate(body){
+    return axiosInstance.put("/epreuve/update", body)
   }
-  supprimerEvents(body, headers){
-    return axiosInstance.post("/epreuve/delete", body, headers)
+  getParticipations(body){
+    return axiosInstance.post("/participation" , body)
   }
-
-  supprimerUsers(body, headers){
-    return axiosInstance.post("/user/delete", body, headers)
+  participationUpdate(body){
+    return axiosInstance.put("/participation/update", body)
   }
-
-  createEvents(body, headers){
-    return axiosInstance.post("/epreuve/create", body, headers)
+  supprimerEvent(body){
+    return axiosInstance.post("/epreuve/delete", body)
+  }
+  eventCreate(body){
+    return axiosInstance.post("/epreuve/create", body)
   }
 }
 

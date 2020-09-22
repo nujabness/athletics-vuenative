@@ -1,5 +1,16 @@
 <template>
     <nb-container :style="styles.bgColorPrimary">
+        <nb-header :style="styles.bgColorPrimary">
+            <nb-left>
+                <nb-button transparent>
+                    <nb-icon :style="{ color: '#FFF' }" name="menu" :on-press="() => drawerOpen()"/>
+                </nb-button>
+            </nb-left>
+            <nb-body>
+                <nb-title :style="styles.colorWhite">Profile</nb-title>
+            </nb-body>
+            <nb-right></nb-right>
+        </nb-header>
         <nb-grid>
             <nb-col :style="styles.alignItemsCenter, styles.mt50">
                 <view>
@@ -76,6 +87,9 @@ export default {
     methods: {
         goToEditProfileScreen() {
             this.navigation.navigate("EditProfile");
+        },
+        drawerOpen(){
+            this.navigation.openDrawer();
         }
     }
 }

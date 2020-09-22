@@ -30,7 +30,6 @@
                             <nb-label :style="styles.colorWhite">Sexe Athlète</nb-label>
                             <nb-picker
                                     mode="dropdown"
-                                    iosHeader="Select your SIM"
                                     :iosIcon="getIosIcon()"
                                     :textStyle="{ color: '#FFFFFF' }"
                                     :itemTextStyle="{ color: '#F08080' }"
@@ -142,7 +141,7 @@ export default {
         goToProfileScreen() {
             this.navigation.navigate("Profile");
         },
-        save(){
+        save() {
              let body = {
                  id: this.user._id,
                  email: this.email,

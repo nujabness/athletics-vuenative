@@ -1,47 +1,72 @@
 <template>
-    <<scroll-view :style="styles.bgColorPrimary">
-        <nb-grid>
-            <nb-col :style="styles.alignItemsCenter, styles.mt30">
-                <view v-for="event in events">
-                    <nb-card :style="styles.width350">
-                        <nb-card-item bordered>
-                            <nb-left>
-                                <nb-thumbnail :source="imgEvent(event.type_epreuve)"/>
-                                <nb-body>
-                                    <nb-text>{{event.nom_epreuve}} {{event.type_epreuve}} {{event.phase_epreuve}}</nb-text>
-                                    <nb-text note>{{event.date_epreuve}}</nb-text>
-                                </nb-body>
-                            </nb-left>
-                        </nb-card-item>
-                        <nb-card-item :style="styles.justifyContentCenter">
-                            <nb-col :style="styles.alignItemsCenter">
-                                <view>
-                                    <nb-button
-                                            :on-press="details">
-                                        <nb-text>Détails</nb-text>
-                                    </nb-button>
-                                </view>
-                            </nb-col>
-                            <nb-col :style="styles.alignItemsCenter">
-                                <view v-if="!participeDeja(event.participants)">
-                                    <nb-button
-                                            :on-press="() => participer(event)">
-                                        <nb-text>Participer</nb-text>
-                                    </nb-button>
-                                </view>
-                                <view v-if="participeDeja(event.participants)">
-                                    <nb-button
-                                            :on-press="() => annulerParticiper(event)">
-                                        <nb-text>Annuler participation</nb-text>
-                                    </nb-button>
-                                </view>
-                            </nb-col>
-                        </nb-card-item>
-                    </nb-card>
-                </view>
-            </nb-col>
-        </nb-grid>
-    </scroll-view>
+    <nb-container>
+        <nb-header :style="styles.bgColorPrimary">
+            <nb-left>
+                <nb-button transparent>
+                    <nb-icon :style="{ color: '#FFF' }" name="menu" :on-press="drawerOpen"/>
+                </nb-button>
+            </nb-left>
+            <nb-body>
+                <nb-title :style="styles.colorWhite">Events</nb-title>
+            </nb-body>
+            <nb-right>
+                <nb-button transparent>
+                    <nb-icon :style="{ color: '#FFF' }" name="ios-add-circle" :on-press="createEvent"/>
+                </nb-button>
+            </nb-right>
+        </nb-header>
+        <scroll-view :style="styles.bgColorPrimary">
+            <nb-grid>
+                <nb-col :style="styles.alignItemsCenter, styles.mt30">
+                    <view v-for="event in events">
+                        <nb-card :style="styles.width350">
+                            <nb-card-item bordered>
+                                <nb-left>
+                                    <nb-thumbnail :source="imgEvent(event.type_epreuve)"/>
+                                    <nb-body>
+                                        <nb-text>{{event.nom_epreuve}} {{event.type_epreuve}} {{event.phase_epreuve}}</nb-text>
+                                        <nb-text note>{{event.date_epreuve}}</nb-text>
+                                    </nb-body>
+                                </nb-left>
+                            </nb-card-item>
+                            <nb-card-item :style="styles.justifyContentCenter">
+                                <nb-col :style="styles.alignItemsCenter">
+                                    <view>
+                                        <nb-button
+                                                :on-press="() => edit(event)">
+                                            <nb-text>Edit</nb-text>
+                                        </nb-button>
+                                    </view>
+                                </nb-col>
+                                <nb-col :style="styles.alignItemsCenter">
+                                    <view>
+                                        <nb-button
+                                                :on-press="() => supprimer(event)">
+                                            <nb-text>Supprimer</nb-text>
+                                        </nb-button>
+                                    </view>
+                                </nb-col>
+                                <nb-col :style="styles.alignItemsCenter">
+                                    <view v-if="!participeDeja(event.participants)">
+                                        <nb-button
+                                                :on-press="() => participer(event)">
+                                            <nb-text>Participer</nb-text>
+                                        </nb-button>
+                                    </view>
+                                    <view v-if="participeDeja(event.participants)">
+                                        <nb-button
+                                                :on-press="() => annulerParticiper(event)">
+                                            <nb-text>Annuler</nb-text>
+                                        </nb-button>
+                                    </view>
+                                </nb-col>
+                            </nb-card-item>
+                        </nb-card>
+                    </view>
+                </nb-col>
+            </nb-grid>
+        </scroll-view>
+    </nb-container>
 </template>
 
 <script>
@@ -116,8 +141,24 @@ export default {
                 console.log(error)
             })
         },
-        details() {
-
+        supprimer(event) {
+            let body = {
+                id: event._id,
+            }
+            DataService.supprimerEvent(body).then(response => {
+                this.getAllEvents()
+            }).catch(error => {
+                console.log(error)
+            })
+        },
+        edit(event){
+            this.navigation.navigate("EditEvent", {event: event});
+        },
+        drawerOpen(){
+            this.navigation.openDrawer();
+        },
+        createEvent() {
+            this.navigation.navigate("EditEvent");
         }
     }
 }

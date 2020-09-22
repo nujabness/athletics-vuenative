@@ -1,7 +1,7 @@
 <template>
     <nb-container :style="styles.bgColorPrimary">
         <nb-grid>
-            <nb-col :style="styles.alignItemsCenter, styles.mt50">
+            <nb-col :style="styles.alignItemsCenter, styles.mt100">
                 <view>
                     <image :source="cardImage" class="card-item-image" :style="stylesObj.cardItemImage"/>
                 </view>
