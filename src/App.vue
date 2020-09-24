@@ -9,7 +9,6 @@
     createStackNavigator,
   } from "vue-native-router";
   import React from "react";
-  import { Icon } from "native-base";
   import LoginScreen from "./screens/LoginScreen";
   import RegisterScreen from "./screens/RegisterScreen";
   import ProfileScreen from "./screens/ProfileScreen.vue";
